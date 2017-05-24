@@ -24,7 +24,10 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
         $this->router = $router;
         $this->encoder = $encoder;
     }
-
+    /**
+     * Get user credentials by http request, posted from login form.
+     * @return array
+     */
     public function getCredentials(Request $request)
     {
         if ($request->getPathInfo() != '/login_check') {
@@ -40,7 +43,10 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
             'password' => $password,
         ];
     }
-
+    /**
+     * Get user object by passed credentials.
+     * @return object
+     */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $username = $credentials['username'];
@@ -48,6 +54,10 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
         return $userProvider->loadUserByUsername($username);
     }
 
+    /**
+     * Check user credentials.
+     * @return true or BadCredentialsException
+     */
     public function checkCredentials($credentials, UserInterface $user)
     {
         $plainPassword = $credentials['password'];
@@ -57,14 +67,20 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
 
         throw new BadCredentialsException();
     }
-
+    /**
+     * Implement on successful authentication redirect.
+     * @return string
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         $url = $this->router->generate('welcome');
 
         return new RedirectResponse($url);
     }
-
+    /**
+     * Implement on authentication failure redirect.
+     * @return string
+     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
@@ -73,17 +89,26 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
 
        return new RedirectResponse($url);
     }
-
+    /**
+     * Get login URL.
+     * @return string
+     */
     protected function getLoginUrl()
     {
         return $this->router->generate('login');
     }
-
+    /**
+     * Get default successful authentication redirect URL.
+     * @return string
+     */
     protected function getDefaultSuccessRedirectUrl()
     {
         return $this->router->generate('welcome');
     }
-
+    /**
+     * Set remember me support for login.
+     * @return boolean
+     */
     public function supportsRememberMe()
     {
         return false;

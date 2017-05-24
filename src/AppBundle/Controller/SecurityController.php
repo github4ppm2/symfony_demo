@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends Controller
 {
     /**
+     * User login process, if user is already loggedin redirect to
+     * welcome page.
+     *
      * @Route("/login", name="login")
      */
     public function loginAction(Request $request)
@@ -29,6 +32,8 @@ class SecurityController extends Controller
     }
 
     /**
+     * Check is user loggedin.
+     *
      * @Route("/login_check", name="security_login_check")
      */
     public function loginCheckAction()
@@ -37,6 +42,8 @@ class SecurityController extends Controller
     }
 
     /**
+     * Logout action.
+     *
      * @Route("/logout", name="logout")
      */
     public function logoutAction()

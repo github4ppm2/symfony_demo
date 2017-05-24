@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DefaultController extends Controller
 {
     /**
+     * Main index action for homepage.
+     *
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
@@ -19,8 +21,10 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
-    
+
     /**
+     * Welcome action to show after login page( i.e. welcome page).
+     *
      * @Route("/welcome", name="welcome")
      * @Security("has_role('ROLE_USER')")
      */

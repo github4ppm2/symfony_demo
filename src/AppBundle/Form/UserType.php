@@ -10,6 +10,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
+    /**
+     * User registration form generate using FormBuilderInterface.
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -21,6 +24,9 @@ class UserType extends AbstractType
             ]);
     }
 
+    /**
+     * Creating an options system with required options and defaults.
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

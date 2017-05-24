@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 class RegistrationController extends Controller
 {
     /**
+     * Perform registration process, if user is already loggedin redirect to
+     * welcome page.
+     *
      * @Route("/register", name="register")
      */
     public function registerAction(Request $request)
@@ -18,7 +21,7 @@ class RegistrationController extends Controller
         if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('welcome');
         }
-        
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -34,7 +37,7 @@ class RegistrationController extends Controller
 
             return $this->redirectToRoute('login');
         }
-        //print_r($form->createView());die;
+        
         return $this->render('auth/register.html.twig', [
             'form' => $form->createView(),
         ]);
