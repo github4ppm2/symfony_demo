@@ -5,10 +5,15 @@
     <div id="wrapper">
         <div id="container" class="home-container">
             <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
-
+                {% if( is_granted('IS_AUTHENTICATED_FULLY') ) %}
+                <h1>Welcome {{ app.user.username|capitalize }}</h1>
+                <a href="{{ path('welcome') }}" class="btn btn-info"> Home </a>
+                {% else %}
+                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }} Demo</h1>
                 <a href="login" class="btn btn-info"> Login </a>
                 <a href="register" class="btn btn-info"> Register Here!</a>
+                {% endif %}
+
             </div>
 
             <div id="status">
