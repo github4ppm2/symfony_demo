@@ -12,6 +12,6 @@ Steps-
 
   * Update dependencies by composer - ``` composer install ```
 
-  * Migrate Database migrations ``` php bin/console doctrine:schema:update --force ```
+  * Migrate database migrations ``` php bin/console doctrine:schema:update --force ```
 
 All Done !
