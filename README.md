@@ -3,9 +3,6 @@ Symfony 3.2.8 Demo
 
 Welcome to the Symfony 3.2.8 Demo - Steps for configuration are given below.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
 Steps-
 --------------
 
@@ -15,6 +12,6 @@ Steps-
 
   * Update dependencies by composer - ``` composer install ```
 
-  * Migrate Database migrations ``` php bin/console doctrine:migrations:update --force ```
+  * Migrate Database migrations ``` php bin/console doctrine:schema:update --force ```
 
 All Done !
