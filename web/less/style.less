@@ -1,0 +1,31 @@
+@primarycolor: #FF7F50;
+@errorColor: #de2320;
+@color:#800080;
+@errorFontStyle: italic;
+@errorliMargin: 0px 0 0 -40px;
+@borderColor: #3c763d;
+@headingColor: #337ab7;
+@boxShadow: 4px 4px 10px #CCC;
+@topMargin: 2em;
+
+.form_group ul {
+  color: @errorColor;
+  list-style: none;
+  font-style: @errorFontStyle;
+  li{
+      margin: @errorliMargin;
+  }
+}
+#welcome{
+    border-bottom: 1px solid @borderColor;
+    padding-bottom: 1.5em;
+    h1{
+        color: @headingColor;
+    }
+}
+.home-container, .panel{
+    box-shadow: @boxShadow;
+}
+.panel {
+    margin-top: @topMargin;
+}

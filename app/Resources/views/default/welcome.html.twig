@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Welcome {% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}
+                    <a class="btn btn-warning btn-xs pull-right" href="logout">Logout</a>
+                </div>
+                <div class="panel-body">
+                    Welcome <span class="btn btn-xs btn-info">{{ app.user.username|upper }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
