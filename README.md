@@ -10,7 +10,7 @@ Steps-
 
   * Make a copy of ``` app/config/parameters.yml.dist ``` as ``` app/config/parameters.yml ``` and set your database credentials.
 
-  Example -
+  Sample ```parameters.yml``` -
   ```yaml
   parameters:
       database_host: DB_HOST
